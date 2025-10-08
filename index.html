@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -116,7 +116,7 @@ canvas#fireworks {position:absolute; top:0; left:0; width:100%; height:100%; z-i
 </div>
 
 <!-- Audio -->
-<audio id="bgMusic" src="lagu.m4a"></audio>
+<audio id="bgMusic" src="lagu.m4a" loop></audio>
 
 <!-- Stiker Tebak Lucu -->
 <img id="stiker1" src="https://feeldreams.github.io/pusn2.gif" hidden>
@@ -165,7 +165,7 @@ const photo = document.getElementById('photo');
 // Start Button
 document.getElementById('startBtn').addEventListener('click', async()=>{
   document.getElementById('intro').style.display='none';
-  music.play();
+  music.play().catch(e => console.log("Audio play error:", e)); // play audio
   triggerFireworks();
   await tebakLucu();
 });
@@ -189,7 +189,7 @@ function masukGift(){
   animateBubbleChat();
 }
 
-// Bubble Chat Animation: semua tetap terlihat, muncul satu per satu
+// Bubble Chat Animation
 function animateBubbleChat(){
   const ps = document.querySelectorAll('#bq p');
   let i=0;
